@@ -1,3 +1,7 @@
+import 'package:book_bloc/core/utlis/styles_fonts.dart';
+import 'package:book_bloc/features/home/data/presentation/views/widgets/detailsWidgets/books_details_section.dart';
+import 'package:book_bloc/features/home/data/presentation/views/widgets/detailsWidgets/custom_details_appbar.dart';
+import 'package:book_bloc/features/home/data/presentation/views/widgets/homeWidgets/custom_list_view_item.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
@@ -5,26 +9,27 @@ class BookDetailsViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+    var width = MediaQuery.of(context).size.width;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
       child: Column(
-        children: [CustomBookDetailsAppBar()],
+        children: [
+          const CustomBookDetailsAppBar(),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: width * 0.17),
+            child: const CustomBookImage(),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          const Text(
+            'The Jungle book',
+            style: Styles.textStyle20,
+          ),
+         
+          const BooksDetailsSection(),
+        ],
       ),
-    );
-  }
-}
-
-class CustomBookDetailsAppBar extends StatelessWidget {
-  const CustomBookDetailsAppBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        IconButton(onPressed: () {}, icon: const Icon(Icons.close)),
-        IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart_outlined)),
-      ],
     );
   }
 }
