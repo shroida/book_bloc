@@ -1,24 +1,22 @@
 
-import 'package:book_bloc/core/utlis/assets_images.dart';
+import 'package:book_bloc/features/home/data/presentation/views/widgets/custom_list_view_item.dart';
 import 'package:flutter/material.dart';
 
-class CustomListViewItem extends StatelessWidget {
-  const CustomListViewItem({super.key});
+
+class FeaturedBooksListView extends StatelessWidget {
+  const FeaturedBooksListView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.3,
-      child: AspectRatio(
-        aspectRatio: 2.7 / 4,
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            image: const DecorationImage(
-                fit: BoxFit.fill, image: AssetImage(AssetsImages.testImage)),
-          ),
-        ),
-      ),
-    );
+        height: MediaQuery.of(context).size.height * 0.3,
+        child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return const Padding(
+                padding: EdgeInsets.all(8.0),
+                child: CustomListViewItem(),
+              );
+            }));
   }
 }
