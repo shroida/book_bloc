@@ -1,7 +1,7 @@
 import 'package:book_bloc/core/utlis/styles_fonts.dart';
-import 'package:book_bloc/features/home/data/presentation/views/widgets/best_seller_column.dart';
-import 'package:book_bloc/features/home/data/presentation/views/widgets/custom_appbar.dart';
-import 'package:book_bloc/features/home/data/presentation/views/widgets/featured_list_view.dart';
+import 'package:book_bloc/features/home/data/presentation/views/widgets/homeWidgets/best_seller_column.dart';
+import 'package:book_bloc/features/home/data/presentation/views/widgets/detailsWidgets/custom_appbar.dart';
+import 'package:book_bloc/features/home/data/presentation/views/widgets/homeWidgets/featured_list_view.dart';
 import 'package:flutter/material.dart';
 
 class HomeViewBody extends StatelessWidget {
