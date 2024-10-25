@@ -2,10 +2,10 @@ import 'package:book_bloc/features/home/data/presentation/views/widgets/book_det
 import 'package:flutter/material.dart';
 
 class BookDetailsView extends StatelessWidget {
-const BookDetailsView({ super.key });
+  const BookDetailsView({super.key});
 
   @override
-  Widget build(BuildContext context){
-    return const BookDetailsViewBody();
+  Widget build(BuildContext context) {
+    return const Scaffold(body: BookDetailsViewBody());
   }
 }
