@@ -6,6 +6,6 @@ const BookDetailsView({ super.key });
 
   @override
   Widget build(BuildContext context){
-    return BookDetailsViewBody();
+    return const BookDetailsViewBody();
   }
 }

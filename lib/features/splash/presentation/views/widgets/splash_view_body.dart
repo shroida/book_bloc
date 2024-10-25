@@ -1,7 +1,8 @@
+import 'package:book_bloc/core/utlis/app_router.dart';
 import 'package:book_bloc/core/utlis/assets_images.dart';
-import 'package:book_bloc/features/home/data/presentation/views/home_view.dart';
 import 'package:book_bloc/features/splash/presentation/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
@@ -59,10 +60,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
     Future.delayed(const Duration(seconds: 2), () {
       if (mounted) {
         // Check if the widget is still mounted
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => const HomeView()));
+        GoRouter.of(context).push(AppRouter.kHomeView);
       }
     });
   }
-
 }
