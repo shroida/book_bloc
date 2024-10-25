@@ -1,4 +1,5 @@
 import 'package:book_bloc/core/utlis/assets_images.dart';
+import 'package:book_bloc/features/home/data/presentation/views/home_view.dart';
 import 'package:book_bloc/features/splash/presentation/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void initState() {
     super.initState();
     initSlidingAnimation();
+    navigateToHomeViewAfterAnimation();
   }
 
   @override
@@ -52,4 +54,15 @@ class _SplashViewBodyState extends State<SplashViewBody>
     // Start the animation
     animationController.forward();
   }
+
+  void navigateToHomeViewAfterAnimation() {
+    Future.delayed(const Duration(seconds: 2), () {
+      if (mounted) {
+        // Check if the widget is still mounted
+        Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => const HomeView()));
+      }
+    });
+  }
+
 }
