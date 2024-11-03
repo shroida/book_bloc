@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class SlidingText extends StatelessWidget {
-    final Animation<Offset> slidingAnimation;
+  final Animation<Offset> slidingAnimation;
 
-   const SlidingText({super.key,required this.slidingAnimation});
+  const SlidingText({super.key, required this.slidingAnimation});
 
   @override
   Widget build(BuildContext context) {

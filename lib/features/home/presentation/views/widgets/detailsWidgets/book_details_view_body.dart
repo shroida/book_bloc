@@ -1,8 +1,8 @@
 import 'package:book_bloc/core/utlis/styles_fonts.dart';
-import 'package:book_bloc/features/home/data/presentation/views/widgets/detailsWidgets/books_details_section.dart';
-import 'package:book_bloc/features/home/data/presentation/views/widgets/detailsWidgets/custom_details_appbar.dart';
-import 'package:book_bloc/features/home/data/presentation/views/widgets/detailsWidgets/similar_books_list_view.dart';
-import 'package:book_bloc/features/home/data/presentation/views/widgets/homeWidgets/custom_list_view_item.dart';
+import 'package:book_bloc/features/home/presentation/views/widgets/detailsWidgets/books_details_section.dart';
+import 'package:book_bloc/features/home/presentation/views/widgets/detailsWidgets/custom_details_appbar.dart';
+import 'package:book_bloc/features/home/presentation/views/widgets/detailsWidgets/similar_books_list_view.dart';
+import 'package:book_bloc/features/home/presentation/views/widgets/homeWidgets/custom_list_view_item.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsViewBody extends StatelessWidget {
