@@ -21,22 +21,21 @@ class HomeRepoImpl extends HomeRepos {
       }
       return right(books);
     } on Exception catch (e) {
-      return left(ServerFailure());
+      return left(ServerFailure.fromHttpError(e));
     }
   }
 
   @override
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
-      var data = await apiService.get(endPoint: '');
+      var data = await apiService.get(endPoint: 'volumes?Filtering=free-ebooks&q=programming');
       List<BookModel> books = [];
       for (var item in data['items']) {
         books.add(BookModel.fromJson(item));
       }
       return right(books);
     } on Exception catch (e) {
-      return left(
-          ServerFailure()); 
+      return left(ServerFailure.fromHttpError(e));
     }
   }
 }
