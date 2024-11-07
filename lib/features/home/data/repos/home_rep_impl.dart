@@ -41,4 +41,25 @@ class HomeRepoImpl extends HomeRepos {
       return left(ServerFailure.fromHttpError(e)); // Error handled in ServerFailure
     }
   }
+  
+  @override
+  Future<Either<Failure, List<BookModel>>> fetchSimilar({required String category}) async{
+  
+    try {
+      var data = await apiService.get(
+        endPoint: 'volumes?Filtering=free-ebooks&Sorting=relevance&q=programming',
+      );
+
+      List<BookModel> books = [];
+      for (var item in data['items']) {
+        books.add(BookModel.fromMap(item)); 
+      }
+      return right(books);
+    } on Exception catch (e) {
+      return left(ServerFailure.fromHttpError(e)); // Error handled in ServerFailure
+    }
+  }
+
+
+
 }
