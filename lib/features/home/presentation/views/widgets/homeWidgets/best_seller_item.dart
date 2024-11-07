@@ -40,7 +40,7 @@ class BestSellerItem extends StatelessWidget {
                   height: 3,
                 ),
                 Text(
-                  bookModel.volumeInfo.authors![0],
+                  bookModel.volumeInfo.authors != null ? bookModel.volumeInfo.authors![0] : 'Unknown auther',
                   style: Styles.textStyle14,
                 ),
                 RatingRowWidget(bookModel: bookModel)

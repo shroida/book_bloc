@@ -21,7 +21,7 @@ class HomeRepoImpl extends HomeRepos {
       }
       return right(books);
     } on Exception catch (e) {
-      return left(ServerFailure.fromHttpError(e));
+      return left(ServerFailure.fromHttpError(e)); // Handle error here
     }
   }
 
@@ -34,11 +34,11 @@ class HomeRepoImpl extends HomeRepos {
 
       List<BookModel> books = [];
       for (var item in data['items']) {
-        books.add(BookModel.fromMap(item)); // Use fromMap here
+        books.add(BookModel.fromMap(item)); 
       }
       return right(books);
     } on Exception catch (e) {
-      return left(ServerFailure.fromHttpError(e));
+      return left(ServerFailure.fromHttpError(e)); // Error handled in ServerFailure
     }
   }
 }
