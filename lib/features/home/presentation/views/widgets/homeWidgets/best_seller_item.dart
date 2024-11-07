@@ -1,13 +1,14 @@
 import 'package:book_bloc/core/utlis/app_router.dart';
-import 'package:book_bloc/core/utlis/assets_images.dart';
 import 'package:book_bloc/core/utlis/styles_fonts.dart';
+import 'package:book_bloc/features/home/data/models/book_model/book_model.dart';
+import 'package:book_bloc/features/home/presentation/views/widgets/homeWidgets/custom_list_view_item.dart';
+import 'package:book_bloc/features/home/presentation/views/widgets/homeWidgets/rating_row_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
-
+  const BestSellerItem({super.key, required this.bookModel});
+  final BookModel bookModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,17 +19,8 @@ class BestSellerItem extends StatelessWidget {
         height: 125,
         child: Row(
           children: [
-            AspectRatio(
-              aspectRatio: 2.5 / 4,
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(16),
-                  image: const DecorationImage(
-                      fit: BoxFit.fill,
-                      image: AssetImage(AssetsImages.testImage)),
-                ),
-              ),
-            ),
+            CustomBookImage(
+                imageUrl: bookModel.volumeInfo.imageLinks.smallThumbnail),
             const SizedBox(
               width: 30,
             ),
@@ -37,8 +29,8 @@ class BestSellerItem extends StatelessWidget {
               children: [
                 SizedBox(
                   width: MediaQuery.of(context).size.width * 0.5,
-                  child: const Text(
-                    'Harry Potter and the Goblet of Fire',
+                  child: Text(
+                    bookModel.volumeInfo.title!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: Styles.textStyle18,
@@ -47,37 +39,11 @@ class BestSellerItem extends StatelessWidget {
                 const SizedBox(
                   height: 3,
                 ),
-                const Text(
-                  'J.K. Shroida',
+                Text(
+                  bookModel.volumeInfo.authors![0],
                   style: Styles.textStyle14,
                 ),
-                const Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Text(
-                      '19.99 €',
-                      style: Styles.textStyle20,
-                    ),
-                    SizedBox(width: 26),
-                    Row(
-                      children: [
-                        Icon(
-                          FontAwesomeIcons.solidStar,
-                          color: Color(0xffffdd4f),
-                          size: 15,
-                        ),
-                        Text(
-                          '4.8',
-                          style: Styles.textStyle16,
-                        ),
-                        Text(
-                          '(156)',
-                          style: Styles.textStyle14,
-                        ),
-                      ],
-                    )
-                  ],
-                )
+                RatingRowWidget(bookModel: bookModel)
               ],
             )
           ],

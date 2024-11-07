@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
 import 'image_links.dart';
@@ -16,6 +17,8 @@ class VolumeInfo {
   final int? pageCount;
   final String? printType;
   final List<String>? categories;
+  final num? averageRating;
+  final int? ratingsCount;
   final String? maturityRating;
   final bool? allowAnonLogging;
   final String? contentVersion;
@@ -37,6 +40,8 @@ class VolumeInfo {
     this.pageCount,
     this.printType,
     this.categories,
+    this.averageRating,
+    this.ratingsCount,
     this.maturityRating,
     this.allowAnonLogging,
     this.contentVersion,
@@ -63,6 +68,8 @@ class VolumeInfo {
             : ReadingModes.fromMap(
                 data['readingModes'] as Map<String, dynamic>),
         pageCount: data['pageCount'] as int?,
+        averageRating: data['averageRating'],
+        ratingsCount: data['ratingsCount'] as int?,
         printType: data['printType'] as String?,
         categories: (data['categories'] as List<dynamic>?)
             ?.map((item) => item as String)
