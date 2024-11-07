@@ -1,6 +1,6 @@
 import 'package:book_bloc/core/widgets/custom_error.dart';
 import 'package:book_bloc/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
-import 'package:book_bloc/features/home/presentation/views/widgets/homeWidgets/CustomBookImageShimmer.dart';
+import 'package:book_bloc/features/home/presentation/views/widgets/homeWidgets/custom_book_image_shimmer.dart';
 import 'package:book_bloc/features/home/presentation/views/widgets/homeWidgets/custom_list_view_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
