@@ -10,7 +10,7 @@ class BookModel {
   String? id;
   String? etag;
   String? selfLink;
-  VolumeInfo? volumeInfo;
+  VolumeInfo volumeInfo;
   SaleInfo? saleInfo;
   AccessInfo? accessInfo;
   SearchInfo? searchInfo;
@@ -20,7 +20,7 @@ class BookModel {
     this.id,
     this.etag,
     this.selfLink,
-    this.volumeInfo,
+    required this.volumeInfo,
     this.saleInfo,
     this.accessInfo,
     this.searchInfo,
@@ -31,9 +31,8 @@ class BookModel {
         id: data['id'] as String?,
         etag: data['etag'] as String?,
         selfLink: data['selfLink'] as String?,
-        volumeInfo: data['volumeInfo'] == null
-            ? null
-            : VolumeInfo.fromMap(data['volumeInfo'] as Map<String, dynamic>),
+        volumeInfo:
+            VolumeInfo.fromMap(data['volumeInfo'] as Map<String, dynamic>),
         saleInfo: data['saleInfo'] == null
             ? null
             : SaleInfo.fromMap(data['saleInfo'] as Map<String, dynamic>),
@@ -50,7 +49,7 @@ class BookModel {
         'id': id,
         'etag': etag,
         'selfLink': selfLink,
-        'volumeInfo': volumeInfo?.toMap(),
+        'volumeInfo': volumeInfo.toMap(),
         'saleInfo': saleInfo?.toMap(),
         'accessInfo': accessInfo?.toMap(),
         'searchInfo': searchInfo?.toMap(),

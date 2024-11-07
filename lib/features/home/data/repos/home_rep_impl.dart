@@ -17,7 +17,7 @@ class HomeRepoImpl extends HomeRepos {
 
       List<BookModel> books = [];
       for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
+        books.add(BookModel.fromMap(item)); // Use fromMap here
       }
       return right(books);
     } on Exception catch (e) {
@@ -28,10 +28,13 @@ class HomeRepoImpl extends HomeRepos {
   @override
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks() async {
     try {
-      var data = await apiService.get(endPoint: 'volumes?Filtering=free-ebooks&q=programming');
+      var data = await apiService.get(
+        endPoint: 'volumes?Filtering=free-ebooks&q=programming',
+      );
+
       List<BookModel> books = [];
       for (var item in data['items']) {
-        books.add(BookModel.fromJson(item));
+        books.add(BookModel.fromMap(item)); // Use fromMap here
       }
       return right(books);
     } on Exception catch (e) {

@@ -6,25 +6,25 @@ import 'panelization_summary.dart';
 import 'reading_modes.dart';
 
 class VolumeInfo {
-  String? title;
-  List<String>? authors;
-  String? publisher;
-  String? publishedDate;
-  String? description;
-  List<IndustryIdentifier>? industryIdentifiers;
-  ReadingModes? readingModes;
-  int? pageCount;
-  String? printType;
-  List<String>? categories;
-  String? maturityRating;
-  bool? allowAnonLogging;
-  String? contentVersion;
-  PanelizationSummary? panelizationSummary;
-  ImageLinks? imageLinks;
-  String? language;
-  String? previewLink;
-  String? infoLink;
-  String? canonicalVolumeLink;
+  final String? title;
+  final List<String>? authors;
+  final String? publisher;
+  final String? publishedDate;
+  final String? description;
+  final List<IndustryIdentifier>? industryIdentifiers;
+  final ReadingModes? readingModes;
+  final int? pageCount;
+  final String? printType;
+  final List<String>? categories;
+  final String? maturityRating;
+  final bool? allowAnonLogging;
+  final String? contentVersion;
+  final PanelizationSummary? panelizationSummary;
+  final ImageLinks imageLinks;
+  final String? language;
+  final String? previewLink;
+  final String? infoLink;
+  final String? canonicalVolumeLink;
 
   VolumeInfo({
     this.title,
@@ -41,16 +41,17 @@ class VolumeInfo {
     this.allowAnonLogging,
     this.contentVersion,
     this.panelizationSummary,
-    this.imageLinks,
+    required this.imageLinks,
     this.language,
     this.previewLink,
     this.infoLink,
     this.canonicalVolumeLink,
   });
-
   factory VolumeInfo.fromMap(Map<String, dynamic> data) => VolumeInfo(
         title: data['title'] as String?,
-        authors: data['authors'] as List<String>?,
+        authors: (data['authors'] as List<dynamic>?)
+            ?.map((item) => item as String)
+            .toList(),
         publisher: data['publisher'] as String?,
         publishedDate: data['publishedDate'] as String?,
         description: data['description'] as String?,
@@ -63,7 +64,9 @@ class VolumeInfo {
                 data['readingModes'] as Map<String, dynamic>),
         pageCount: data['pageCount'] as int?,
         printType: data['printType'] as String?,
-        categories: data['categories'] as List<String>?,
+        categories: (data['categories'] as List<dynamic>?)
+            ?.map((item) => item as String)
+            .toList(),
         maturityRating: data['maturityRating'] as String?,
         allowAnonLogging: data['allowAnonLogging'] as bool?,
         contentVersion: data['contentVersion'] as String?,
@@ -71,9 +74,8 @@ class VolumeInfo {
             ? null
             : PanelizationSummary.fromMap(
                 data['panelizationSummary'] as Map<String, dynamic>),
-        imageLinks: data['imageLinks'] == null
-            ? null
-            : ImageLinks.fromMap(data['imageLinks'] as Map<String, dynamic>),
+        imageLinks:
+            ImageLinks.fromMap(data['imageLinks'] as Map<String, dynamic>),
         language: data['language'] as String?,
         previewLink: data['previewLink'] as String?,
         infoLink: data['infoLink'] as String?,
@@ -96,7 +98,7 @@ class VolumeInfo {
         'allowAnonLogging': allowAnonLogging,
         'contentVersion': contentVersion,
         'panelizationSummary': panelizationSummary?.toMap(),
-        'imageLinks': imageLinks?.toMap(),
+        'imageLinks': imageLinks.toMap(),
         'language': language,
         'previewLink': previewLink,
         'infoLink': infoLink,
