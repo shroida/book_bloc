@@ -1,4 +1,5 @@
 import 'package:book_bloc/core/utlis/api_service.dart';
+import 'package:book_bloc/features/home/data/models/book_model/book_model.dart';
 import 'package:book_bloc/features/home/data/repos/home_rep_impl.dart';
 import 'package:book_bloc/features/home/presentation/manager/similar_books_cubit_cubit/similar_books_cubit_cubit.dart';
 import 'package:book_bloc/features/home/presentation/views/book_details_view.dart';
@@ -19,9 +20,11 @@ abstract class AppRouter {
     GoRoute(
         path: kBookDetailsView,
         builder: (context, state) => BlocProvider(
-              create: (context) => SimilarBooksCubitCubit((HomeRepoImpl(ApiService()))),
-              child: const BookDetailsView(),
+              create: (context) =>
+                  SimilarBooksCubitCubit((HomeRepoImpl(ApiService()))),
+              child: BookDetailsView(
+                bookModel: state.extra as BookModel,
+              ),
             )),
   ]);
 }
- 

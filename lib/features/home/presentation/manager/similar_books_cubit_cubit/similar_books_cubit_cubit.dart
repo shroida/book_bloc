@@ -1,4 +1,3 @@
-
 import 'package:book_bloc/features/home/data/models/book_model/book_model.dart';
 import 'package:book_bloc/features/home/data/repos/home_repos.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,10 +9,10 @@ class SimilarBooksCubitCubit extends Cubit<SimilarBooksCubitState> {
     this.homeRepos,
   ) : super(SimilarBooksCubitInitial());
 
-   final HomeRepos homeRepos;
-  Future<void> fetchNewsetBooks() async {
+  final HomeRepos homeRepos;
+  Future<void> fetchSimilar({required String category}) async {
     emit(SimilarBooksCubitLoading());
-    var result = await homeRepos.fetchBestSellerBooks();
+    var result = await homeRepos.fetchSimilar(category: category);
     result.fold((failure) {
       emit(SimilarBooksFailure(failure.errMessage));
     }, (books) {

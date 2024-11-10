@@ -20,11 +20,11 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-            create: (context) =>
-                FeaturedBooksCubit(HomeRepoImpl(ApiService()))..fetchFeatureBooks()),
+            create: (context) => FeaturedBooksCubit(HomeRepoImpl(ApiService()))
+              ..fetchFeatureBooks()),
         BlocProvider(
-            create: (context) => NewsetBooksCubit(HomeRepoImpl(ApiService()))..fetchNewsetBooks()),
-      
+            create: (context) => NewsetBooksCubit(HomeRepoImpl(ApiService()))
+              ..fetchNewsetBooks()),
       ],
       child: MaterialApp.router(
         routerConfig: AppRouter.router,
