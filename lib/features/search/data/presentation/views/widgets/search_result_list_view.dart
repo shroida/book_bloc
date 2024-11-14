@@ -1,4 +1,4 @@
-import 'package:book_bloc/features/home/presentation/views/widgets/homeWidgets/best_seller_item.dart';
+// import 'package:book_bloc/features/home/presentation/views/widgets/homeWidgets/best_seller_item.dart';
 import 'package:flutter/material.dart';
 
 class SearchResultListView extends StatelessWidget {
